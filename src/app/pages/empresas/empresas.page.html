@@ -1,0 +1,71 @@
+<ion-menu class="toolbar" color="warning" side="start" content-id="main-content">
+  <ion-header color="warning">
+    <ion-toolbar color="warning">
+      <ion-title color="light">Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+     
+      <ion-item>
+        <ion-icon name="alert-circle-sharp" slot="start"></ion-icon>
+        <ion-label>Sobre</ion-label>
+      </ion-item>
+
+      <ion-item >
+        <ion-icon name="exit-sharp" slot="start"></ion-icon>
+        <ion-label>Sair</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="light">Restaurantes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo">
+    <img src="../../../assets/imgs/justWaves.jpg" alt="Logo do Delivery">
+  </div>
+  
+  <ion-list>
+    <ion-searchbar class="placeholderEmail" color="medium" placeholder="Buscar Restaurante"></ion-searchbar>
+
+    <ion-list-header>
+      Restaurantes
+    </ion-list-header>
+
+    <ion-item>
+      <ion-avatar slot="end">
+        <img src="../../../assets/icon/aguadoce.jpg">
+      </ion-avatar>
+      <ion-label>
+        <h2>Água Doce Cachaçaria</h2>
+        <h6>Frete: R$5,00</h6>
+        <h6>25-35min</h6>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-avatar slot="end">
+        <img src="../../../assets/icon/veracee.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>Verace Pizzaria</h2> 
+        <h6>Frete: R$7,00</h6>
+        <h6>10-25min</h6>
+      </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
+
+</ion-content>
+
