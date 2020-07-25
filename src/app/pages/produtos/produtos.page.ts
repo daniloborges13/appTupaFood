@@ -1,4 +1,6 @@
+import { Post } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-produtos',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProdutosPage implements OnInit {
 
-  constructor() { }
+  constructor(private provider: Post, public toast: ToastController) { }
 
   ngOnInit() {
+  }
+
+  async listarProdutos() {
+
+    let dados = {
+      requisicao : 'listar-produtos',
+      
+    }
+
+
   }
 
 }
