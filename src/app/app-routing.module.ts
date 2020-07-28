@@ -12,16 +12,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule)
   },
   {
-    path: 'cliente',
-    loadChildren: () => import('./pages/cliente/cliente.module').then( m => m.ClientePageModule)
-  },
-  {
     path: 'empresas',
     loadChildren: () => import('./pages/empresas/empresas.module').then( m => m.EmpresasPageModule)
   },
   {
     path: 'produtos',
     loadChildren: () => import('./pages/produtos/produtos.module').then( m => m.ProdutosPageModule)
+  },
+  {
+    path: 'login-cliente',
+    loadChildren: () => import('./pages/login-cliente/login-cliente.module').then( m => m.LoginClientePageModule)
+  },
+  {
+    path: 'cadastro-cliente',
+    loadChildren: () => import('./pages/cadastro-cliente/cadastro-cliente.module').then( m => m.CadastroClientePageModule)
   }
 ];
 

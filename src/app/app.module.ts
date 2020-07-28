@@ -1,3 +1,4 @@
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Post } from './services/post.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   providers: [
+    NativeStorage,
     Post,
     StatusBar,
     SplashScreen,

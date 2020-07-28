@@ -1,0 +1,113 @@
+<ion-header translucent>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Cadastro Cliente</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="logo">
+    <img src="../../../assets/imgs/justWaves.jpg" alt="Logo do Delivery">
+  </div>
+
+
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <br>
+    <div class="ion-text-center">
+      <b>Informações para login</b>
+    </div>
+    <ion-grid>
+      <ion-item>
+        <ion-label position="stacked">Nome <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="nome" required type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="email" required type="text"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-item size="6">
+            <ion-label position="stacked">Senha <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="senha" required type="password"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item size="6">
+            <ion-label position="stacked">Confirmar Senha <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="confSenha" required type="password"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+    
+
+       
+
+
+      <br>
+
+      <div class="ion-text-center">
+        <b>Informações para entrega</b>
+      </div>
+
+      <ion-row>
+        <ion-col>
+          <ion-item size="8">
+            <ion-label position="stacked">Endereço <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="endereco" required type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="stacked">Nº <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="numero" required type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+      <ion-row>
+        <ion-col>
+          <ion-item size="6">
+            <ion-label position="stacked">Bairro <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="bairro" required type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Complemento <ion-text color="danger">*</ion-text>
+            </ion-label>
+            <ion-input [(ngModel)]="complemento" required type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label position="stacked">Celular <ion-text color="danger">*</ion-text>
+        </ion-label>
+        <ion-input [(ngModel)]="telefone" required type="text"></ion-input>
+      </ion-item>
+
+    </ion-grid>
+
+    <ion-button (click)="tryRegister()" expand="block" shape="round" color="danger"><b style="color: white;"> Cadastrar </b></ion-button>
+
+  </ion-list>
+
+</ion-content>
