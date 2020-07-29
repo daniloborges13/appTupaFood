@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Post } from './../../services/post.service';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { Component, OnInit } from '@angular/core';
-import { resolve } from 'dns';
+
 
 @Component({
   selector: 'app-cadastro-cliente',
@@ -97,18 +97,18 @@ export class CadastroClientePage implements OnInit {
           if(res.success==true){
             loader.dismiss();
             this.disableButton = false;
-            this.presentToast(res.msg);
-            this.router.navigate(['/login-cliente']);
+            this.presentAlert('Ocorreu um erro ao cadastrar!');
           }else{
             loader.dismiss();
             this.disableButton = false;
             this.presentToast(res.msg);
           }
-        },(err) =>{
-          loader.dismiss();
-          this.disableButton = false;
-          this.presentAlert('Timeout')
-        })
+        },(res:any) =>{
+            loader.dismiss();
+            this.disableButton = false;
+            this.presentToast('Cadastrado com sucesso!');
+            this.router.navigate(['/login-cliente']);
+        });
       });
 
     }
@@ -116,13 +116,11 @@ export class CadastroClientePage implements OnInit {
 
   async presentAlert(a){
     const alert = await this.alertCtrl.create({
-      cssClass: 'my-custom-class',
       header: a,
       backdropDismiss: false,
       buttons: [
         {
           text: 'Close',
-          cssClass: 'warning',
           handler: (blah) => {
             console.log('Confirm Cancel: blah');
           }
@@ -136,6 +134,4 @@ export class CadastroClientePage implements OnInit {
     });
     await alert.present();
   }
-
-
 }
