@@ -6,16 +6,18 @@
   </ion-header>
   <ion-content>
     <ion-list>
-     
+
       <ion-item>
         <ion-icon name="alert-circle-sharp" slot="start"></ion-icon>
         <ion-label>Sobre</ion-label>
       </ion-item>
 
-      <ion-item >
-        <ion-icon name="exit-sharp" slot="start"></ion-icon>
-        <ion-label>Sair</ion-label>
-      </ion-item>
+      <div (click)="logout()">
+        <ion-item>
+          <ion-icon slot="start" name="exit-sharp"></ion-icon>
+          <ion-label>Sair</ion-label>
+        </ion-item>
+      </div>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -26,6 +28,14 @@
       <ion-menu-button color="light"></ion-menu-button>
     </ion-buttons>
     <ion-title color="light">Restaurantes</ion-title>
+
+    <ion-buttons slot="end" (click)="logout()">
+      <ion-button color="light">
+        <ion-icon name="exit-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
   </ion-toolbar>
 </ion-header>
 
@@ -33,7 +43,7 @@
   <div class="logo">
     <img src="../../../assets/imgs/justWaves.jpg" alt="Logo do Delivery">
   </div>
-  
+
   <ion-list>
     <ion-searchbar class="placeholderEmail" color="medium" placeholder="Buscar Restaurante"></ion-searchbar>
 
@@ -57,7 +67,7 @@
         <img src="../../../assets/icon/veracee.png">
       </ion-avatar>
       <ion-label>
-        <h2>Verace Pizzaria</h2> 
+        <h2>Verace Pizzaria</h2>
         <h6>Frete: R$7,00</h6>
         <h6>10-25min</h6>
       </ion-label>
@@ -68,4 +78,3 @@
 
 
 </ion-content>
-
