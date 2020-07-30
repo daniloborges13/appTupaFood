@@ -1,4 +1,4 @@
-import { ToastController, AlertController } from '@ionic/angular';
+import { ToastController, AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Post } from '../../services/post.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -12,145 +12,73 @@ import { NativeStorage } from '@ionic-native/native-storage/ngx';
 })
 export class LoginClientePage implements OnInit {
 
-  usuario : string = "";
-  senha : string = "";
+  email: string = "";
+  senha: string = "";
+  disableButton: boolean;
 
-  constructor(public alertController: AlertController,
-     private storage: NativeStorage,
-      private router:Router,
-       private provider:Post,
-        public toast: ToastController) { }
+  constructor(
+    public alertController: AlertController,
+    private storage: NativeStorage,
+    private router: Router,
+    private provider: Post,
+    public toast: ToastController,
+    public loading: LoadingController,
+    public navCtrl: NavController
+  ) { }
 
   ngOnInit() {
   }
 
-  async login(){
-    if(this.usuario == ""){
-      const toast = await this.toast.create({
-        message: 'Preencha o Usuário',
-        duration: 2000,
-        color: 'warning'
-      });
-      toast.present();
-      return;
+  async presentToast(a) {
+    const toast = await this.toast.create({
+      message: a,
+      duration: 1500,
+      position: 'top'
+    });
+    toast.present();
+  }
+
+  ionViewDidEnter() {
+    this.disableButton = false;
+  }
+
+  async tryLogin() {
+    if (this.email == "") {
+      this.presentToast('O campo email é obrigatório');
+    } else if (this.senha == "") {
+      this.presentToast('O campo senha é obrigatório');
     }
-
-    if(this.senha == ""){
-      const toast = await this.toast.create({
-        message: 'Preencha a Senha',
-        duration: 2000,
-        color: 'warning'
+    else {
+      this.disableButton = true;
+      const loader = await this.loading.create({
+        message: 'Por favor aguarde...',
       });
-      toast.present();
-      return;
+      loader.present();
+
+      return new Promise(resolve => {
+        let body = {
+          requisicao: 'loginCliente',
+          email: this.email,
+          senha: this.senha
+        }
+
+        this.provider.dadosApi(body, 'apiCadastroCliente.php').subscribe((res: any) => {
+          if (res.success == true) {
+            loader.dismiss();
+            this.presentToast('Logado com sucesso!');
+            this.storage.setItem('storage_xxx', res.result);
+            this.navCtrl.navigateRoot(['/empresas']);
+          } else {
+            loader.dismiss();
+            this.disableButton = false;
+            this.presentToast('Ocorreu um erro!');
+          }
+        }, (err) => {
+          loader.dismiss();
+          this.disableButton = false;
+          this.presentToast('Email ou senha incorretos!');
+        });
+      });
     }
-
-
-    let dados = {
-      requisicao : 'login',
-      usuario : this.usuario, 
-      senha : this.senha
-      
-      };
-
-      this.provider.dadosApi(dados, 'apiLogin.php').subscribe(async data => {
-      var alert = data['msg'];
-      if(data['success']) {
-        this.storage.setItem('session_storage', data['result']);
-        
-          this.router.navigate(['/empresas']);
-                
-        const toast = await this.toast.create({
-          message: 'Logado com Sucesso!!',
-          duration: 1000,
-          color: 'success'
-        });
-        toast.present();
-        this.usuario = "";
-        this.senha = "";
-        console.log(data);
-      }else{
-        const toast = await this.toast.create({
-          message: alert,
-          duration: 2000,
-          color: 'danger'
-        });
-        toast.present();
-      }
-       
-               
-      });
-}
-
-
-
-cadastro(){
-  this.router.navigate([ '/cadastro']);
-}
-
-async recuperarModal(){
-  const alert = await this.alertController.create({
-    header: 'Recuperar Email!',
-    inputs: [
-      {
-        name: 'email',
-        type: 'text',
-        placeholder: 'Insira seu Email',
-        //value: this.usuario
-      },
-      
-    ],
-    buttons: [
-      {
-        text: 'Cancelar',
-        role: 'cancel',
-        cssClass: 'secondary',
-        handler: () => {
-          console.log('Confirm Cancel');
-        }
-      }, {
-        text: 'Enviar',
-        handler: (data) => {
-         //atualizar pag
-         
-         this.usuario = data.email;
-         console.log(this.usuario);
-         this.recuperar();
-        }
-      }
-    ]
-  });
-
-  await alert.present();
-}
-
-async mensagemSalvar(msg) {
-  const toast = await this.toast.create({
-    message: msg,
-    duration: 1000
-  });
-  toast.present();
-}
-
-
-
-recuperar(){
-  return new Promise(resolve => {
-        
-    let dados = {
-      requisicao : 'recuperar',
-      usuario : this.usuario,
-      };
-
-      this.provider.dadosApi(dados, 'apiLogin.php').subscribe(data => {
-        
-        
-          this.mensagemSalvar(data['result']);
-         
-        
-      });
-  });
-}
-
-
+  }
 }

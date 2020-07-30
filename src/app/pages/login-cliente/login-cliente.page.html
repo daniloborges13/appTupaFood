@@ -15,7 +15,7 @@
       <ion-label>
         <ion-icon class="iconeEmail" name="mail"></ion-icon>
       </ion-label>
-      <ion-input  placeholder="E-mail" class="placeholderEmail" type="text" name="email"></ion-input>
+      <ion-input [(ngModel)]="email"  placeholder="E-mail" class="placeholderEmail" type="text" name="email"></ion-input>
     </ion-item>
 
     <!-- senha -->
@@ -23,7 +23,7 @@
       <ion-label>
         <ion-icon class="iconeSenha" name="lock-closed"></ion-icon>
       </ion-label>
-      <ion-input  type="password" placeholder="Senha" name="password"></ion-input>
+      <ion-input [(ngModel)]="senha"  type="password" placeholder="Senha" name="password"></ion-input>
     </ion-item>
   </ion-list>
 
@@ -34,7 +34,7 @@
   </div>
 
   <div class="ion-padding">
-    <ion-button color="danger" expand="block" shape="round" expand="block">Entrar</ion-button>
+    <ion-button (click)="tryLogin()" color="danger" expand="block" shape="round" expand="block">Entrar</ion-button>
   </div>
 
   <!-- inscreva-se e redefinir senha -->
