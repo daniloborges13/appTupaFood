@@ -1,32 +1,53 @@
 <ion-content>
+  <div class="cor-fundo">
+    <div class="ion-text-center">
+      <img src="../../../assets/imgs/ProjetoDeliveryLogo.png" alt="Texto">
+    </div>
 
-  <div class="ion-text-center">
-    <img src="../../../assets/imgs/textoInicio.png" alt="Texto">
-  </div>
-
-    <div class="ion-text-center" style="font-size: 18px;">
+    <div class="text">
+      Seja bem-vindo <br>
       <b>Você é...</b>
     </div>
 
     <div class="ion-text-center">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="6">  
-          <p>
-            <ion-button [routerLink]="['/login-cliente']" expand="block" shape="round" color="danger"><b style="color: white;"> Cliente </b></ion-button>
-          </p>
-        </ion-col>
-        <ion-col size="6">
-          <p>
-            <ion-button expand="block" shape="round" color="danger"><b style="color: white;"> Empresa</b></ion-button>  
-          </p>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <p>
+              <ion-button class="botao" [routerLink]="['/login-cliente']" expand="block" color="primary">
+                <ion-grid>
+                  <ion-col>
+                    <ion-row class="icone-cliente">
+                      <ion-icon class="icone" name="fast-food-outline"></ion-icon>
+                    </ion-row>
+                    <ion-row>
+                      <label class="texto-cliente" style="color: white;"> Cliente </label>
+                    </ion-row>
+                  </ion-col>
+              </ion-grid>
+              </ion-button>
+            </p>
+          </ion-col>
+          <ion-col size="6">
+            <p>
+              <ion-button class="botao" expand="block" color="danger">
+                <ion-grid>
+
+                  <ion-col>
+                    <ion-row class="icone-empresa">
+                      <ion-icon name="business-outline"></ion-icon>
+                    </ion-row>
+                    <ion-row>
+                      <label class="texto-empresa" style="color: white;">Empresa</label>
+                    </ion-row>
+                  </ion-col>
+
+                </ion-grid>
+              </ion-button>
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </div>
-
-  <div class="logo">
-    <img src="../../../assets/imgs/Logo.jpg" alt="Logo do Delivery">
   </div>
-
 </ion-content>

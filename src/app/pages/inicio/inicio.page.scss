@@ -1,4 +1,39 @@
-.logo{
-    bottom: 0px;
-    position: absolute;
+ion-content{
+    --ion-background-color:#ffae00;
 }
+
+.text{
+    font-size: 18px; 
+    color: white;
+    padding-left: 20px;
+    padding-top: 80px;
+}
+
+.botao{
+    height: 110px;
+}
+
+ion-icon{
+    width: 50px;
+    height: 40px;
+}
+
+.texto-empresa{
+    margin-left: 28px;
+}
+
+.icone-empresa{
+    margin-left: 35px;
+}
+
+.texto-cliente{
+    margin-left: 33px;
+}
+
+.icone-cliente{
+    margin-left: 38px;
+}
+
+
+
+

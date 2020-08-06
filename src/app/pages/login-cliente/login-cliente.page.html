@@ -1,5 +1,5 @@
 <ion-header translucent>
-  <ion-toolbar color="warning">
+  <ion-toolbar >
     <ion-buttons  slot="start">
       <ion-back-button color="light" defaultHref="/"></ion-back-button>
     </ion-buttons>
@@ -28,24 +28,21 @@
   </ion-list>
 
   <!-- botao entrar -->
-  
-  <div class="logo">
-    <img src="../../../assets/imgs/justWaves.jpg" alt="Waves">
-  </div>
 
   <div class="ion-padding">
     <ion-button (click)="tryLogin()" color="danger" expand="block" shape="round" expand="block">Entrar</ion-button>
   </div>
 
+  <br> <br> <br>
   <!-- inscreva-se e redefinir senha -->
   <ion-row class="ion-text-center">
     <ion-col col-12>
-      <b [routerLink]="['/cadastro-cliente']">Cadastre-se </b>
+      <p [routerLink]="['/cadastro-cliente']">CADASTRA-SE </p>
     </ion-col>
   </ion-row>
   <ion-row class="ion-text-center">
     <ion-col col-12>
-      <b> <p> Redefinir senha </p></b>
+      <p> REDEFINIR SENHA </p>
     </ion-col>
   </ion-row>
   </div>

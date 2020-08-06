@@ -5,10 +5,9 @@ import 'rxjs/add/operator/timeout';
 
 @Injectable()
 export class Post{
-    server: string = 'http://localhost/delivery/apis/';
+    server: string = 'http://localhost/api/cliente/';
 
-    constructor(
-        public http : HttpClient){}
+    constructor(public http : HttpClient){}
 
     dadosApi(body, file){
         let headers = new HttpHeaders({
@@ -19,7 +18,6 @@ export class Post{
         } 
     
         return this.http.post(this.server + file, JSON.stringify(body), options)
-        .timeout(59000)
-        .map(res => res)
+        
     }
 }
