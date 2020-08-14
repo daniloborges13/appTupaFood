@@ -1,41 +1,35 @@
-import { ToastController, LoadingController, AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { Post } from './../../services/post.service';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Post } from 'src/app/services/post.service';
+import { Router } from '@angular/router';
+import { ToastController, LoadingController, AlertController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-cadastro-cliente',
-  templateUrl: './cadastro-cliente.page.html',
-  styleUrls: ['./cadastro-cliente.page.scss'],
+  selector: 'app-cadastro-empresa',
+  templateUrl: './cadastro-empresa.page.html',
+  styleUrls: ['./cadastro-empresa.page.scss'],
 })
-export class CadastroClientePage implements OnInit {
-  formCadastroCliente: FormGroup;
+export class CadastroEmpresaPage implements OnInit {
 
-  constructor(
-    private provider: Post,
+  constructor(private provider: Post,
     private router: Router,
     public toast: ToastController,
     public loading: LoadingController,
     public alertCtrl: AlertController,
     private frmBuilder: FormBuilder) { }
 
+  formCadastroEmpresa: FormGroup;
+
   ngOnInit() {
-    this.formCadastroCliente = this.frmBuilder.group({
-      nome: ['', Validators.required],
+    this.formCadastroEmpresa = this.frmBuilder.group({
+      propriedade: ['', Validators.required],
       email: ['', Validators.required],
       senha: ['', Validators.required],
-      confSenha: ['', Validators.required],
-      endereco: ['', Validators.required],
-      numero: ['', Validators.required],
-      bairro: ['', Validators.required],
-      complemento: ['', Validators.required],
-      celular: ['', Validators.required]
+      nome_estabelecimento: ['', Validators.required],
     });
   }
 
-
-  async mensagemSalvar() {
+  async mensagemSalvar(){
     const toast = await this.toast.create({
       message: 'Cadastro realizado com sucesso!',
       duration: 1000
@@ -43,7 +37,7 @@ export class CadastroClientePage implements OnInit {
     toast.present();
   }
 
-  async presentToast(a) {
+  async presentToast(a){
     const toast = await this.toast.create({
       message: a,
       duration: 1500,
@@ -52,16 +46,16 @@ export class CadastroClientePage implements OnInit {
     toast.present();
   }
 
-  async salvarCadastroCliente() {
+  async salvarCadastroEmpresa(){
     const loader = await this.loading.create({
       message: 'Por favor aguarde...',
     });
     loader.present();
 
-    this.provider.dadosApi(this.formCadastroCliente.value).subscribe((res) => {
+    this.provider.dadosApi(this.formCadastroEmpresa.value).subscribe((res) => {
       if (res) {
-        this.router.navigate(['login-cliente']);
-        this.formCadastroCliente.reset();
+        this.router.navigate(['login-empresa']);
+        this.formCadastroEmpresa.reset();
         loader.dismiss();
         this.presentToast('Cadastrado com sucesso!');
         console.log('foi certo');
@@ -76,4 +70,5 @@ export class CadastroClientePage implements OnInit {
       this.presentToast('Ocorreu erro ao cadastrar!');
     });
   }
+
 }

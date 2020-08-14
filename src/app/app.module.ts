@@ -13,7 +13,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgxMessageErrorModule, MessagesConfig } from 'ngx-message-error';
 
+const customMessages: MessagesConfig = {
+  min: 'Please enter a value greater than or equal to ?.',
+  max: 'Please enter a value less than or equal to ?.',
+  required: 'Este campo é obrigatório.',
+  requiredTrue: 'Este campo é obrigatório.',
+  email: 'Por favor preencha um email válido.',
+  minlength: 'Caracteres mínimos não atingidos. ?/?',
+  maxlength: 'Máximo de caracteres excedido. ?/?'
+}
 
 
 @NgModule({
@@ -25,6 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    NgxMessageErrorModule.forRoot(customMessages)
   
   ],
   providers: [

@@ -1,0 +1,70 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Cadastro da Empresa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <br>
+    <div class="ion-text-center">
+      <b>Dados do Estabelecimento</b>
+    </div>
+    <form [formGroup]="formCadastroEmpresa" novalidade (ngSubmit)="salvarCadastroEmpresa()" >
+      <ion-grid>
+        <ion-item>
+          <ion-label position="stacked">Proprietário<ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="proprietario" required type="text"></ion-input>
+          <ngx-message-error formControlName="proprietario"></ngx-message-error>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Email <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="email" required type="text"></ion-input>
+          <ngx-message-error formControlName="email"></ngx-message-error>
+        </ion-item>
+
+
+        <ion-row>
+          <ion-col>
+            <ion-item size="6">
+              <ion-label position="stacked">Senha <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input formControlName="senha" required type="password"></ion-input>
+              <ngx-message-error formControlName="senha"></ngx-message-error>
+            </ion-item>
+          </ion-col>
+
+          <ion-col>
+            <ion-item size="6">
+              <ion-label position="stacked">Confirmar Senha <ion-text color="danger">*</ion-text>
+              </ion-label>
+              <ion-input required type="password"></ion-input>
+              <ngx-message-error formControlName="senha"></ngx-message-error>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+        <ion-item>
+          <ion-label position="stacked">Nome do estabelecimento <ion-text color="danger">*</ion-text>
+          </ion-label>
+          <ion-input formControlName="nome_estabelecimento" required type="text"></ion-input>
+          <ngx-message-error formControlName="nome_estabelecimento"></ngx-message-error>
+        </ion-item>
+
+      </ion-grid>
+
+      <br>
+      <ion-button type="submit" expand="block" shape="round" color="danger"><b style="color: white;"> Cadastrar
+        </b></ion-button>
+    </form>
+
+  </ion-list>
+
+</ion-content>

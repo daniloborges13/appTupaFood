@@ -1,0 +1,51 @@
+<ion-header translucent>
+  <ion-toolbar >
+    <ion-buttons  slot="start">
+      <ion-back-button color="light" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title color="light">Login da Empresa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="conteudo">
+
+  <ion-list class="bg-transparent ion-padding">
+    <ion-item class="email">
+      <ion-label>
+        <ion-icon class="iconeEmail" name="mail"></ion-icon>
+      </ion-label>
+      <ion-input placeholder="E-mail" class="placeholderEmail" type="text" name="email"></ion-input>
+    </ion-item>
+
+    <!-- senha -->
+    <ion-item class="email">
+      <ion-label>
+        <ion-icon class="iconeSenha" name="lock-closed"></ion-icon>
+      </ion-label>
+      <ion-input  type="password" placeholder="Senha" name="password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <!-- botao entrar -->
+
+  <div class="ion-padding">
+    <ion-button color="danger" expand="block" shape="round" expand="block">Entrar</ion-button>
+  </div>
+
+  <br> <br> <br>
+  <!-- inscreva-se e redefinir senha -->
+  <ion-row class="ion-text-center">
+    <ion-col col-12>
+      <p [routerLink]="['/cadastro-empresa']">CADASTRA-SE </p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center">
+    <ion-col col-12>
+      <p> REDEFINIR SENHA </p>
+    </ion-col>
+  </ion-row>
+  </div>
+  
+
+</ion-content>

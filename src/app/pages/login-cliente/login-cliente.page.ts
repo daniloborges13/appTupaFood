@@ -1,3 +1,4 @@
+import { FormGroup } from '@angular/forms';
 import { ToastController, AlertController, LoadingController, NavController } from '@ionic/angular';
 import { Post } from '../../services/post.service';
 import { Router } from '@angular/router';
@@ -15,6 +16,8 @@ export class LoginClientePage implements OnInit {
   email: string = "";
   senha: string = "";
   disableButton: boolean;
+
+  formLoginCliente: FormGroup;
 
   constructor(
     public alertController: AlertController,
@@ -57,16 +60,15 @@ export class LoginClientePage implements OnInit {
 
       return new Promise(resolve => {
         let body = {
-          requisicao: 'loginCliente',
           email: this.email,
           senha: this.senha
         }
 
-        this.provider.dadosApi(body, 'apiCadastroCliente.php').subscribe((res: any) => {
-          if (res.success == true) {
+        this.provider.dadosApi(this.formLoginCliente.value).subscribe((res) => {
+          if (res) {
             loader.dismiss();
             this.presentToast('Logado com sucesso!');
-            this.storage.setItem('storage_xxx', res.result);
+            this.storage.setItem('storage_xxx', res);
             this.navCtrl.navigateRoot(['/empresas']);
           } else {
             loader.dismiss();
