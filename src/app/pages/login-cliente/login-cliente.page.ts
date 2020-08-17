@@ -16,7 +16,6 @@ export class LoginClientePage implements OnInit {
   email: string = "";
   senha: string = "";
   disableButton: boolean;
-
   formLoginCliente: FormGroup;
 
   constructor(
